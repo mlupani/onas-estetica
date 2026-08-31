@@ -234,14 +234,15 @@ export default function ChatAssistant() {
   );
 
   return (
-    <div className="pointer-events-none fixed inset-0 z-[60]">
+    <>
       {open ? (
         <div
           className={cn(
-            "pointer-events-auto chat-panel absolute flex flex-col overflow-hidden bg-ivory shadow-[0_24px_80px_rgba(28,22,18,0.18)]",
-            "inset-3 top-auto h-[min(92svh,720px)]",
+            "floating-fixed chat-panel pointer-events-auto z-[60] flex flex-col overflow-hidden bg-ivory shadow-[0_24px_80px_rgba(28,22,18,0.18)]",
+            "inset-x-3 bottom-3 h-[min(92dvh,720px)] max-h-[calc(100dvh-1.5rem)]",
             "md:inset-auto md:right-6 md:bottom-6 md:h-[620px] md:w-[380px]",
           )}
+          style={{ paddingBottom: "env(safe-area-inset-bottom)" }}
         >
           <header className="flex items-center justify-between border-b border-ink/8 bg-paper px-4 py-3">
             <div>
@@ -344,7 +345,7 @@ export default function ChatAssistant() {
       ) : null}
 
       {!open ? (
-        <div className="pointer-events-auto absolute right-5 bottom-5 flex items-center gap-3 md:right-6 md:bottom-6">
+        <div className="floating-fixed pointer-events-auto z-[60] flex items-center gap-3 right-5 bottom-5 md:right-6 md:bottom-6" style={{ bottom: "max(1.25rem, env(safe-area-inset-bottom))" }}>
           <button
             type="button"
             onClick={() => setOpen(true)}
@@ -367,6 +368,6 @@ export default function ChatAssistant() {
           </a>
         </div>
       ) : null}
-    </div>
+    </>
   );
 }
