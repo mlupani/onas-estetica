@@ -22,14 +22,15 @@ const manrope = Manrope({
   variable: "--font-manrope",
 });
 
+const siteUrl =
+  process.env.NEXT_PUBLIC_SITE_URL ?? "https://onas-estetica.vercel.app";
+
 const title = "ONAS | Estética Integral en Lanús Oeste";
 const description =
   "ONAS — Clínica de estética integral en Lanús Oeste. Tratamientos faciales, Botox, ácido hialurónico, masoterapia facial y más. Reservá tu turno.";
 
 export const metadata: Metadata = {
-  metadataBase: new URL(
-    process.env.NEXT_PUBLIC_SITE_URL ?? "https://onas-estetica.local",
-  ),
+  metadataBase: new URL(siteUrl),
   title,
   description,
   keywords: [
@@ -47,7 +48,14 @@ export const metadata: Metadata = {
     locale: "es_AR",
     type: "website",
     siteName: "ONAS",
+    url: siteUrl,
     images: [
+      {
+        url: images.logo,
+        width: 640,
+        height: 640,
+        alt: "ONAS — estética integral en Lanús Oeste",
+      },
       {
         url: images.og,
         width: 1200,
@@ -60,7 +68,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title,
     description,
-    images: [images.og],
+    images: [images.logo, images.og],
   },
   icons: {
     icon: images.logo,
